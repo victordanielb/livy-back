@@ -1,0 +1,19 @@
+version: "3.1"
+services:
+  db:
+    container_name: sqlnode-postgres-facilita-v2
+    image: postgres:10-alpine
+    ports:
+      - "5432:5432" 
+    environment:
+      POSTGRES_DB: sqlnode
+      POSTGRES_USER: docker 
+      POSTGRES_PASSWORD: docker
+  admin:
+    container_name: sqlnode-adminer-facilita-v2
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 7171:7171
